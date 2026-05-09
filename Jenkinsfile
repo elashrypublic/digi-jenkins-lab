@@ -5,15 +5,13 @@ pipeline {
     stage('Checkout') {
       steps {
         git branch: 'main',
-            url: 'https://github.com/AbdelrhmanEzzat/digi-jenkins.git'
+            url: 'https://github.com/elashrypublic/digi-jenkins-lab.git'
       }
     }
 
     stage('Install') {
       steps {
         sh '''
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
           npm install
         '''
       }
@@ -22,8 +20,6 @@ pipeline {
     stage('Test') {
       steps {
         sh '''
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
           npm test
         '''
       }
